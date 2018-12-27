@@ -1,26 +1,29 @@
 [*]
 [*] GTKWave Analyzer v3.3.79 (w)1999-2017 BSI
-[*] Thu Dec 27 05:25:09 2018
+[*] Thu Dec 27 06:19:18 2018
 [*]
 [dumpfile] "/home/yshimmyo/Documents/NSLRungeKutta/src/RungeKutta_tb.vcd"
-[dumpfile_mtime] "Thu Dec 27 05:24:13 2018"
-[dumpfile_size] 37879
+[dumpfile_mtime] "Thu Dec 27 06:18:02 2018"
+[dumpfile_size] 52083
 [savefile] "/home/yshimmyo/Documents/NSLRungeKutta/src/gtkw.gtkw"
 [timestart] 0
 [size] 1770 1056
 [pos] -1 -1
-*-4.834482 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-2.132486 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb.
 [treeopen] tb.RungeKutta_tb_instance.
+[treeopen] tb.RungeKutta_tb_instance.rk.
 [sst_width] 210
 [signals_width] 94
 [sst_expanded] 1
 [sst_vpaned_height] 315
 @22
 tb.RungeKutta_tb_instance.rk.k1[31:0]
-tb.RungeKutta_tb_instance.rk.k2[31:0]
-tb.RungeKutta_tb_instance.rk.k3[31:0]
+tb.RungeKutta_tb_instance.rk.alu1.a[31:0]
+tb.RungeKutta_tb_instance.rk.alu1.b[31:0]
+tb.RungeKutta_tb_instance.rk.alu1.c[31:0]
+tb.RungeKutta_tb_instance.rk.derivation1.x[31:0]
 @23
-tb.RungeKutta_tb_instance.rk.k4[31:0]
+tb.RungeKutta_tb_instance.rk.derivation1.y[31:0]
 [pattern_trace] 1
 [pattern_trace] 0

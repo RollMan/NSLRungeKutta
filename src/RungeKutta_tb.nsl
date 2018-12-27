@@ -5,7 +5,7 @@ declare RungeKutta_tb simulation{}
 module RungeKutta_tb {
   RungeKutta rk;
   reg cnt[32] = 0;
-  reg y[32] = 32'x00000400;
+  reg y[32] = 32'x00000100;
 
   y := rk.exec(y);
   _display("%x", y);

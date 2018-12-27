@@ -11,20 +11,9 @@ module RungeKutta {
   wire res_rk[32];
 
   func exec{
-    k1 = alu1.mul(DT, derivation1.exec(previous));
-    k2_arg = alu3.add(previous, alu2.div(k1, 2));
-    k2 = alu4.mul(DT, derivation2.exec(k2_arg));
-    k3_arg = alu6.add(previous, alu5.div(k2, 2));
-    k3 = alu7.mul(DT, derivation3.exec(k3_arg));
-    k4_arg = alu8.add(previous, k3);
-    k4 = alu9.mul(DT, derivation4.exec(k4_arg));
+    k1 = alu1.mul(32'h00000100, derivation1.exec(previous));
 
-
-    res1 = alu10.div(k1, 6);
-    res2 = alu11.div(k2, 3);
-    res3 = alu12.div(k3, 3);
-    res4 = alu13.div(k4, 6);
-    res_rk = previous + res1 + res2 + res3 + res4;
+    res_rk = previous + k1;
 
     return res_rk;
   }
