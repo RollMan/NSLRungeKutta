@@ -1,0 +1,28 @@
+#include "Fixed.nsh"
+
+module Fixed {
+  wire product[UPPER+UPPER+LOWER+LOWER];
+  func add {
+    return a + b;
+  }
+  func mul {
+    product = a * b;
+    return ((a * b) >> LOWER)[31:0];
+  }
+  func div {
+    wire res[32];
+    any{
+      b == 2: {res = a >> 1;}
+      b == 3: {// 6 / 2
+        product = a*32'd6;
+        res = (product >> 1)[31:0];
+      } 
+      b == 6: { // 2/12
+        product = a*32'd12;
+        res = (product >> 1)[31:0];
+      }
+      else: {res = 0;}
+    }
+    return res;
+  }
+}

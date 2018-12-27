@@ -1,0 +1,29 @@
+#include "Fixed.nsh"
+
+declare Fixed_tb simulation{}
+
+module Fixed_tb{
+  Fixed f;
+  func_self start();
+  reg cnt[10] = 0;
+  if(cnt < 10)
+    cnt++;
+  else if(cnt == 10){
+    cnt++;
+    start();
+  }
+  func start seq{
+    reg a[UPPER+LOWER];
+    reg b[UPPER+LOWER];
+
+    a := 32'x00000033; // 0.2
+    b := 32'x00000180; // 1.5
+    _display("%x + %x = %x", a, b, f.add(a, b));
+    _display("%x * %x = %x", a, b, f.mul(a, b));
+    _display("%x / 2 = %x", a, f.div(a, 2));
+    _display("%x / 3 = %x", a, f.div(a, 3));
+    _display("%x / 6 = %x", a, f.div(a, 6));
+    _finish();
+
+  }
+}
