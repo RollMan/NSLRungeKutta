@@ -1,0 +1,9 @@
+#include "Function.nsh"
+#include "Fixed.nsh"
+
+module Function {
+  Fixed fixed1;
+  func exec {
+    return 32'd2 * x;
+  }
+}

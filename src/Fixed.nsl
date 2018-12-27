@@ -2,24 +2,32 @@
 
 module Fixed {
   wire product[UPPER+UPPER+LOWER+LOWER];
+  wire muling[32], muled[32], mulres[32];
+  func_self mul_self(muled, muling) : mulres;
   func add {
     return a + b;
   }
+
+  func mul_self {
+    product = muled * muling;
+    return (product >> LOWER)[31:0];
+  }
+
   func mul {
-    product = a * b;
-    return ((a * b) >> LOWER)[31:0];
+    return mul_self(a, b);
   }
   func div {
+    wire denominator[32];
     wire res[32];
     any{
       b == 2: {res = a >> 1;}
-      b == 3: {// 6 / 2
-        product = a*32'd6;
-        res = (product >> 1)[31:0];
+      b == 3: {
+        denominator = 32'x00000055;
+        res = mul_self(a, denominator);
       } 
       b == 6: { // 2/12
-        product = a*32'd12;
-        res = (product >> 1)[31:0];
+        denominator = 32'x0000002A;
+        res = mul_self(a, denominator);
       }
       else: {res = 0;}
     }

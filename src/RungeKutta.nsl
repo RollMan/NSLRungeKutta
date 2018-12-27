@@ -1,0 +1,31 @@
+#include "RungeKutta.nsh"
+#include "Fixed.nsh"
+#include "Function.nsh"
+
+module RungeKutta {
+  Fixed alu1, alu2, alu3, alu4, alu5, alu6, alu7, alu8, alu9, alu10, alu11, alu12, alu13;
+  Function derivation1, derivation2, derivation3, derivation4;
+  wire k1[32], k2[32], k3[32], k4[32];
+  wire k2_arg[32], k3_arg[32], k4_arg[32];
+  wire res1[32], res2[32], res3[32], res4[32];
+  wire res_rk[32];
+
+  func exec{
+    k1 = alu1.mul(DT, derivation1.exec(previous));
+    k2_arg = alu3.add(previous, alu2.div(k1, 2));
+    k2 = alu4.mul(DT, derivation2.exec(k2_arg));
+    k3_arg = alu6.add(previous, alu5.div(k2, 2));
+    k3 = alu7.mul(DT, derivation3.exec(k3_arg));
+    k4_arg = alu8.add(previous, k3);
+    k4 = alu9.mul(DT, derivation4.exec(k4_arg));
+
+
+    res1 = alu10.div(k1, 6);
+    res2 = alu11.div(k2, 3);
+    res3 = alu12.div(k3, 3);
+    res4 = alu13.div(k4, 6);
+    res_rk = previous + res1 + res2 + res3 + res4;
+
+    return res_rk;
+  }
+}
